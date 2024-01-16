@@ -18,6 +18,7 @@ public class Ex14_PerfectNumber {
 		    	System.out.print (i + " ");
 		}
 		
+		
 
 	}
 	static int divisorSum(int num) {
