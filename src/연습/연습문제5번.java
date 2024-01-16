@@ -14,6 +14,7 @@ public class 연습문제5번 {
 				System.out.println("A");
 			}
 	}
+	
 }
 
 //i k
