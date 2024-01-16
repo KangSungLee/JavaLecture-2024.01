@@ -34,7 +34,11 @@ public class Ex05_Alarm {
 					hour % 24 == 0) ? 23 : hour- 1;
 		}
 		System.out.printf("%02d:%02d%n", newHour, newMin);
+		
 	}
 	
 
 }
+
+
+
