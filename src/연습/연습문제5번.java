@@ -9,6 +9,7 @@ public class 연습문제5번 {
 					continue;
 				}
 				if (k == 1) {
+					
 					break;
 				}
 				System.out.println("A");
