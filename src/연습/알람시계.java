@@ -27,8 +27,10 @@ public class 알람시계 {
 		        newMinute = minute + 60 - brMinute ;
 		    }
 		}
+		
 		System.out.println(hour + "시" + minute +"분 --> " + newHour + "시" + newMinute + "분");
 				
+		
 	}
 
 }

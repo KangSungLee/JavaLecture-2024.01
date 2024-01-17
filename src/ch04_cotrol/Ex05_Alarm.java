@@ -35,6 +35,7 @@ public class Ex05_Alarm {
 		}
 		System.out.printf("%02d:%02d%n", newHour, newMin);
 		
+		
 	}
 	
 

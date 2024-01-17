@@ -7,6 +7,7 @@ public class 연습문제4번 {
 		int num = 10;
 		while (num > 0) {
 			System.out.println(num);
+			
 			num -= 2;
 		}
 		
@@ -18,6 +19,7 @@ public class 연습문제4번 {
 //				break;
 //		}
 
+		
 		
 	}
 

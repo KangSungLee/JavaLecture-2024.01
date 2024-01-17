@@ -16,10 +16,12 @@ public class 연습문제2번 {
 			break;
 		case 7:
 			System.out.println("C학점");
+			
 			break;
 		default:
 			System.out.println("F학점");
 
 		}
 	}
+	
 }

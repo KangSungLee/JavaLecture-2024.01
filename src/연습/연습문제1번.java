@@ -13,7 +13,9 @@ public class 연습문제1번 {
 		System.out.println("C학점");
 	} else {
 		System.out.println("F학점");
+		
 	}
+	
 	
 	}
 

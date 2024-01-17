@@ -10,7 +10,9 @@ public class 연습문제3번 {
 			}
 			if (i > 10)
 				break;
+			
 			System.out.println(i);
 		}
 	}
+	
 }
