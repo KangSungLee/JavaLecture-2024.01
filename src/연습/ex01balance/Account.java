@@ -1,9 +1,9 @@
 package 연습.ex01balance;
 
-public class Accont {
+public class Account {
 	private int bankbook;
 
-	public Accont(int bankbook) {
+	public Account(int bankbook) {
 		this.bankbook = bankbook;
 	}
 	
@@ -12,6 +12,9 @@ public class Accont {
 	}
 	
 	public void setBalance(int bankbook) {
-		this.bankbook += bankbook;
+		if(bankbook <= 1000000)
+			if(bankbook >= 0)
+				this.bankbook += bankbook;
 	}
+	
 }
