@@ -15,7 +15,6 @@ public class Member {	// public 접근제한자
 	public Member() { }	
 	
 	public Member(String name, LocalDate birthday, String email) {
-		super();
 		this.name = name;	//this. 붙이면 필드에 name을 가르킴
 		this.birthday = birthday;
 		this.email = email;
