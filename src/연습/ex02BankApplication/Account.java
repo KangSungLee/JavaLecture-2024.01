@@ -5,6 +5,7 @@ public class Account {
 	private String owner;
 	private int balance;
 	
+	public Account() { }
 	public Account(String ano, String owner, int balance) {
 		this.ano = ano;
 		this.owner = owner;
@@ -33,6 +34,10 @@ public class Account {
 	
 	public void setBalance(int balance) {
 		this.balance = balance;
+	}
+	@Override
+	public String toString() {
+		return "Account [ano=" + ano + ", owner=" + owner + ", balance=" + balance + "]";
 	}
 	
 }

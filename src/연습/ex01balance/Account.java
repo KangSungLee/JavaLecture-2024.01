@@ -14,7 +14,7 @@ public class Account {
 	public void setBalance(int bankbook) {
 		if(bankbook <= 1000000)
 			if(bankbook >= 0)
-				this.bankbook += bankbook;
+				this.bankbook = bankbook;
 	}
 	
 }
