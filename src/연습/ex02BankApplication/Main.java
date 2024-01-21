@@ -62,8 +62,7 @@ public class Main {
 
 		for (int i = 0; i <= count; i++) {	// count 가 현재 만들어진 계좌의 갯수이니 그만큼 반복
 			System.out.println(accountArray[i].getAno() + " " + accountArray[i].getOwner() + " " + accountArray[i].getBalance());
-			scanner.next();
-			return;
+			
 			//  accountArray[i].getAno() getOwner() getBalance() 로 만들어진 계좌의 번호와 예금주 현재 금액을 출력
 		}
 		
