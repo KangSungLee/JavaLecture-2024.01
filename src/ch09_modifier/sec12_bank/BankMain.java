@@ -56,7 +56,7 @@ public class BankMain {
 		int balance = Integer.parseInt(scan.nextLine());
 		Account account = new Account(ano, owner, balance);
 
-		accountArray[index++] = account;
+		accountArray[index++] = account =;
 //		for (int i = 0; i < accountArray.length ; i++) {
 //			if(accountArray[i] != null)
 //				continue;
