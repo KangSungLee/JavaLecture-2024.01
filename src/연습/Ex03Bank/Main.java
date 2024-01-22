@@ -60,8 +60,13 @@ public class Main {
 		System.out.println("계좌목록");
 		System.out.println("-----");
 		
-		for (int i = 0; i <= count; i++) {
-			System.out.println(accountArray[i].getAno() +" "+ accountArray[i].getOwner()+" "+accountArray[i].getBalance());
+		String i = "null";
+		for (Account1 ss :accountArray) {
+			if (accountArray.equals(i)) {
+				return;
+			} else {
+				System.out.println(ss);
+			}
 		}
 		
 	}

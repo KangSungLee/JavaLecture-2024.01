@@ -5,12 +5,14 @@ public class Account1 {
 		private String owner;
 		private int balance;
 		
+		
 		public Account1() { }
 		public Account1(String ano, String owner, int balance) {
 			super();
 			this.ano = ano;
 			this.owner = owner;
 			this.balance = balance;
+			
 		}
 		
 
@@ -37,7 +39,7 @@ public class Account1 {
 		
 		@Override
 		public String toString() {
-			return "Account1 [ano=" + ano + ", owner=" + owner + ", balance=" + balance + "]";
+			return "Account1 [계좌번호" + ano + ", 예금주" + owner + ", 통장잔액=" + balance + "]";
 		}
 		
 	}
