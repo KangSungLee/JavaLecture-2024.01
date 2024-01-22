@@ -1,6 +1,6 @@
 package ch12_Interface.sec02_Interface;
 
-public class Television implements RemoteControllable {
+public class Television implements RemoteControllable { // 인터페이스 상속
 	private int volume;
 	@Override
 	public void turnOn() {

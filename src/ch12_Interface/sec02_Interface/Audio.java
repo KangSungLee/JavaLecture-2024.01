@@ -1,6 +1,6 @@
 package ch12_Interface.sec02_Interface;
 
-public class Audio implements RemoteControllable {
+public class Audio implements RemoteControllable {	// 인터페이스 상속
 	private int volume;
 	
 	@Override
