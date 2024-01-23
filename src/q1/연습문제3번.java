@@ -1,4 +1,4 @@
-package 연습;
+package q1;
 
 public class 연습문제3번 {
 

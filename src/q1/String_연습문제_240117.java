@@ -1,4 +1,4 @@
-package 연습;
+package q1;
 
 public class String_연습문제_240117 {
 
