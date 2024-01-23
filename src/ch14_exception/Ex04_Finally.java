@@ -18,6 +18,8 @@ public class Ex04_Finally {
 		} catch (NumberFormatException e) {
 			e.printStackTrace(); 	// 로그에 보이는 에러삭제
 			System.out.println("사용법: 숫자만 입력하세요");
+		} finally {	// finally 무조건 출력이 발생하는 경우
+			System.out.println("예외와 상관없이 무조건 실행됩니다.");
 		}
 		System.out.println(value);
 	}
