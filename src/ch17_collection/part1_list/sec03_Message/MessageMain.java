@@ -1,20 +1,23 @@
-package ch14_exception.secMessagelesson;
+package ch17_collection.part1_list.sec03_Message;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
+import ch17_collection.part1_list.sec05_member.Member;
+
 public class MessageMain {
-	private static MessageService messageService = new MessageServiceArrayImpl();
+	private static MessageService messageService = new MessageServiceListImpl();
 	static Scanner scan = new Scanner(System.in);
-	
+
 	public static void main(String[] args) {
 		String witer = null, content = null;
-		Message message = null;
+		Message message = new Message();
 		int mid = 0;
 		boolean run = true;
 		while (run) {
-			System.out.println("----------------------------------------------------------------------------------");
-			System.out.println("1.메시지 목록| 2.메시지 작성자 목록 | 3.메시지 작성 | 4.메시지 수정 | 5.메시지 삭제 | 6.프로그램 종료");
-			System.out.println("----------------------------------------------------------------------------------");
+			System.out.println("-----------------------------------------------------------------------------------------------------");
+			System.out.println("1.메시지 목록| 2.작성자 메시지 찾기 | 3.메시지 작성 | 4.메시지 수정 | 5.메시지 삭제 | 6.프로그램 종료");
+			System.out.println("-----------------------------------------------------------------------------------------------------");
 			System.out.print("선택> ");
 			int selectNo = Integer.parseInt(scan.nextLine());
 			switch (selectNo) {
@@ -22,19 +25,19 @@ public class MessageMain {
 				System.out.println("--------");
 				System.out.println("메시지 목록");
 				System.out.println("--------");
-				messageService.messageList();
+				messageService.getMessageListAll();
 				break;
 			case 2:
 				System.out.println("작성자> ");
 				String writer = scan.nextLine();
-				messageService.messageListByWriter(writer);
+				messageService.getMessageListByWriter(writer);
 				break;
 			case 3:
 				System.out.println("작성자> ");
 				writer = scan.nextLine();
 				System.out.println("메시지 내용> ");
 				content = scan.nextLine();
-				message = new Message (content,writer);
+				message = new Message(content, writer);
 				messageService.insertMessage(message);
 				break;
 			case 4:
@@ -44,7 +47,7 @@ public class MessageMain {
 				System.out.println("몇번째 메시지> ");
 				mid = Integer.parseInt(scan.nextLine());
 				message = messageService.findByMid(mid);
-				System.out.print("Writer 이름(" + message.getWriter() + ")> ");
+				System.out.print("작성자 이름(" + message.getWriter() + ")> ");
 				writer = scan.nextLine();
 				System.out.print("메세지 내용(" + message.getContent() + ")> ");
 				content = scan.nextLine();
