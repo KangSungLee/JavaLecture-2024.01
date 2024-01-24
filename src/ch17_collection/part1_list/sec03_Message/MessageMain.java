@@ -1,9 +1,6 @@
 package ch17_collection.part1_list.sec03_Message;
 
-import java.time.LocalDateTime;
 import java.util.Scanner;
-
-import ch17_collection.part1_list.sec05_member.Member;
 
 public class MessageMain {
 	private static MessageService messageService = new MessageServiceListImpl();
