@@ -1,4 +1,4 @@
-package 연습.bankInterpace.copy2;
+package q1.bankInterpace.copy2;
 
 public interface AccountServer {
 void createAccount(Account1[] accountArray);

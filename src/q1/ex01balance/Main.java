@@ -1,4 +1,4 @@
-package 연습.ex01balance;
+package q1.ex01balance;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package 연습.bankInterpace;
+package q1.bankInterpace;
 
 import java.util.Scanner;
 

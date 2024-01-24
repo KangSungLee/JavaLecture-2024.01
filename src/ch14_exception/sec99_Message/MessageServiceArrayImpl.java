@@ -2,11 +2,6 @@ package ch14_exception.sec99_Message;
 
 import java.util.Scanner;
 
-import ch12_Interface.sec12_bank_refactor.Account;
-import ch12_Interface.sec12_bank_refactor.AccountService;
-
-
-
 public class MessageServiceArrayImpl implements MessageService {
 	Scanner scan = new Scanner(System.in);
 	Message[] messageArray = new Message[100];

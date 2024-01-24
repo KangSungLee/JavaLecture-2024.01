@@ -1,4 +1,4 @@
-package 연습.ex02BankApplication;
+package q1.ex02BankApplication;
 
 import java.util.Scanner;
 

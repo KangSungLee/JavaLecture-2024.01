@@ -1,4 +1,4 @@
-package 연습.bankInterpace.copy;
+package q1.bankInterpace.copy;
 
 public class Account1 {
 	private String ano;

@@ -1,8 +1,8 @@
-package 연습.Ex03Bank.copy;
+package q1.Ex03Bank.copy;
 
 import java.util.Scanner;
 
-import 연습.ex02BankApplication.Account;
+import q1.ex02BankApplication.Account;
 
 public class Main {
 	private static Account1[] accountArray = new Account1[100];

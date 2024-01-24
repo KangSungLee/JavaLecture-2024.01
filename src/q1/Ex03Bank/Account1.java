@@ -1,4 +1,4 @@
-package 연습.Ex03Bank;
+package q1.Ex03Bank;
 
 public class Account1 {
 		private String ano;

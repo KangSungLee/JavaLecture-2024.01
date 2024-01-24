@@ -1,4 +1,4 @@
-package 연습.bankInterpace;
+package q1.bankInterpace;
 
 public class Account1 {
 	private String ano;

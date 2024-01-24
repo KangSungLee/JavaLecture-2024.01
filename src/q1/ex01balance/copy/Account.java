@@ -1,4 +1,4 @@
-package 연습.ex01balance.copy;
+package q1.ex01balance.copy;
 
 public class Account {
 	private int bankbook;

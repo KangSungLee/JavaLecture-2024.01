@@ -1,4 +1,4 @@
-package 연습.Ex03Bank.copy;
+package q1.Ex03Bank.copy;
 
 public class Account1 {
 		private String ano;

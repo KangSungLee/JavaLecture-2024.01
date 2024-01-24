@@ -1,4 +1,4 @@
-package 연습.bankInterpace;
+package q1.bankInterpace;
 
 public interface AccountServer {
 void createAccount(Account1[] accountArray);
