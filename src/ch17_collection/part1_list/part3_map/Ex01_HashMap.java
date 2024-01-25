@@ -25,6 +25,7 @@ public class Ex01_HashMap {
 		Set<String> keySet = map.keySet();
 		for (String key: keySet)
 			System.out.println(key + ": " + map.get(key));
+		System.out.println();
 		
 		// Entry의 Set collection
 		Set<java.util.Map.Entry<String, Integer>> entrySet = map.entrySet();
