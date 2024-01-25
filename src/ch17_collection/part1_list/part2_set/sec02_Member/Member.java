@@ -12,7 +12,7 @@ public class Member {
 		this.name = name;
 	}
  	
- 	// HashSet, HashMap 등에 사용하려면 hashCode(), equals() 메소드를 재정의하여야 함
+ 	
 	@Override
 	public int hashCode() {
 		return Objects.hash(age, name);
