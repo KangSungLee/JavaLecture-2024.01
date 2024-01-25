@@ -22,13 +22,13 @@ public class WapExampl {
 			totalScore += map.get(score);
 			if (maxScore < map.get(score)) {
 				maxScore = map.get(score);
+//				name = score;
 			}
 		}
 		Set<Map.Entry<String, Integer>> entrySet = map.entrySet();
 		for (Map.Entry<String, Integer> entry: entrySet)
 			if (entry.getValue() == maxScore)
 				name = entry.getKey();
-		
 			
 		
 		System.out.println("평균점수: " + totalScore / map.size());
