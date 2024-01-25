@@ -1,4 +1,4 @@
-package ch17_collection.part1_list.sec03_Message;
+package ch17_collection.part1_list.sec03_Message_Me;
 
 import java.time.LocalDateTime;
 
@@ -8,25 +8,8 @@ public class Message {
 	private String writer;
 	private LocalDateTime modTime;
 	private int isDeleted;
+	
 	public Message() { }
-	// for Insert
-	public Message(String content, String writer) {
-		this.content = content;
-		this.writer = writer;
-	}
-	// for Update
-	public Message(int mid, String content, String writer) {
-		this.mid = mid;
-		this.content = content;
-		this.writer = writer;
-	}
-	// for Read
-	public Message(int mid, String content, String writer, LocalDateTime modTime) {
-		this.mid = mid;
-		this.content = content;
-		this.writer = writer;
-		this.modTime = modTime;
-	}
 	public Message(int mid, String content, String writer, LocalDateTime modTime, int isDeleted) {
 		this.mid = mid;
 		this.content = content;
@@ -34,16 +17,10 @@ public class Message {
 		this.modTime = modTime;
 		this.isDeleted = isDeleted;
 	}
-	
-	@Override
-	public String toString() {
-		return String.format("%d  %s  %s  %s", mid, content, writer, 
-							modTime.toString().replaceAll("T", " ").substring(0, 16));
-//		return "Message [mid=" + mid + ", content=" + content + ", writer=" + writer 
-//				+ ", modTime=" + modTime.toString().substring(0, 19).replace("T", " ")
-//				+ ", isDeleted=" + isDeleted + "]";
+	public Message(String content, String writer) {
+		this.content = content;
+		this.writer = writer;
 	}
-	
 	public int getMid() {
 		return mid;
 	}
@@ -74,4 +51,10 @@ public class Message {
 	public void setIsDeleted(int isDeleted) {
 		this.isDeleted = isDeleted;
 	}
+	@Override
+	public String toString() {
+		return "Message: " + mid + "번째 내용: " + content + ", 작성자: " + writer + ", 작성일: " + 
+	modTime.toString().replace("T", " ").substring(0, 16);
+	}
+	
 }
