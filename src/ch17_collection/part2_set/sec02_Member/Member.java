@@ -1,4 +1,4 @@
-package ch17_collection.part1_list.part2_set.sec02_Member;
+package ch17_collection.part2_set.sec02_Member;
 
 import java.util.Objects;
 

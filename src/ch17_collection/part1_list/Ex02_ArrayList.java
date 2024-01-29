@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import ch17_collection.part2_set.sec12_member.Member;
+
 public class Ex02_ArrayList {
 
 	public static void main(String[] args) {
@@ -25,7 +27,7 @@ public class Ex02_ArrayList {
 		
 		// 추출(인덱싱)	.get
 		System.out.println(list.get(1));
-		
+						
 		// 데이터 추가
 		list.add("list");		// 맨 뒤에 추가
 		list.add(3, "collection");	//3번인덱스 앞으로추가, 내가원하는 공간으로 추가
@@ -47,9 +49,7 @@ public class Ex02_ArrayList {
 		// 정보 추출
 		System.out.println(numList.isEmpty() + ", " + numList.size());
 		System.out.println(list.contains("setttt"));	// setttt란 단어가 있는지 
-		System.out.println(list.indexOf("list"));	// list란 단어가 몇번째 있는지 없으면 -1
-		
-		
+		System.out.println(list.indexOf("list"));	// list란 단어가 몇번째 있는지 없으면 -1		
 	}
 
 }

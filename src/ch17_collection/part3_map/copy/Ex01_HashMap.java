@@ -1,4 +1,4 @@
-package ch17_collection.part1_list.part3_map;
+package ch17_collection.part3_map.copy;
 
 import java.security.KeyStore.Entry;
 import java.util.HashMap;

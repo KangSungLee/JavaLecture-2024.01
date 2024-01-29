@@ -11,13 +11,10 @@ import org.jsoup.select.Elements;
 
 public class MelonChatService {
 
-	public List<MelonChat> getBestCart() throws IOException {
+	public List<MelonChat> getBestCart(Elements trs) throws IOException {
 		List<MelonChat> list = new ArrayList<MelonChat>();
-		String url = "https://www.melon.com/chart/index.htm";
-		Document doc = Jsoup.connect(url).get();
-		Elements trs = doc.select(".service_list_song.type02.d_song_list > table > tbody > tr");
-
-		for (int i = 0; i < trs.size(); i++) {
+		
+		for (int i = 0; i < trs.size(); i++) {					// 4
 			Element tr = trs.get(i);
 			String rank_ = tr.selectFirst(".rank").text().strip();
 			int rank = Integer.parseInt(rank_);
@@ -29,6 +26,14 @@ public class MelonChatService {
 			list.add(mc);
 		}
 		return list;
-
+		// 에러 확인
+//		for (int i = 0; i <trs.size(); i++) {
+//			try {
+//				Element tr = trs.get(i);
+//				// 작업진행
+//			} catch (Exception e) {
+//				System.out.println(i);	// 에러 발생한 위치를 확인해서 에러 수정
+//			} 
+//		}
 	}
 }

@@ -1,4 +1,4 @@
-package ch17_collection.part1_list.part2_set.sec12_member;
+package ch17_collection.part2_set.sec12_member;
 
 import java.util.Set;
 import java.util.TreeSet;

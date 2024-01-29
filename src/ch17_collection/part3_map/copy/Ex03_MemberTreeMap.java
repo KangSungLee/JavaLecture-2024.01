@@ -1,10 +1,10 @@
-package ch17_collection.part1_list.part3_map;
+package ch17_collection.part3_map.copy;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-import ch17_collection.part1_list.part2_set.sec12_member.Member;
+import ch17_collection.part1_list.sec12_member_sort.Member;
 
 public class Ex03_MemberTreeMap {
 

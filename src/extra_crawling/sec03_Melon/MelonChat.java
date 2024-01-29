@@ -18,8 +18,8 @@ public class MelonChat {
 
 	@Override
 	public String toString() {
-		return "MelonChat [rank=" + rank + ", title=" + title + ", artist=" + artist + ", album=" + album + ", imgSrc="
-				 + "]";
+		return "Melon [r=" + rank + ", t=" + title + ", a=" + artist + ",b=" + album + ", i="
+				 + imgSrc + "]";
 	}
 	public int getRank() {
 		return rank;

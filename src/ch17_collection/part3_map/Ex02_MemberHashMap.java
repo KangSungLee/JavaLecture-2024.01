@@ -1,9 +1,9 @@
-package ch17_collection.part1_list.part3_map;
+package ch17_collection.part3_map;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import ch17_collection.part1_list.part2_set.sec12_member.Member;
+import ch17_collection.part2_set.sec12_member.Member;
 
 public class Ex02_MemberHashMap {
 

@@ -18,7 +18,7 @@ public class InterparkBookService {
 		
 		List<InterparkBook> list = new ArrayList<InterparkBook>();
 		for(Element li: lis) {
-			Elements spans = li.select(".rankNumber.digit2 > span");
+			Elements spans = li.select(".rankNumber.  > span");
 			String rank_ = "";
 			for (Element span: spans) {
 				String s = span.attr("class").strip();

@@ -1,4 +1,4 @@
-package ch17_collection.part1_list.part2_set;
+package ch17_collection.part2_set.copy2;
 
 import java.util.HashSet;
 import java.util.Set;

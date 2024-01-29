@@ -1,4 +1,4 @@
-package ch17_collection.part1_list.part3_map.sec04_properties;
+package ch17_collection.part3_map.sec04_properties;
 
 import java.io.FileInputStream;
 import java.io.IOException;
