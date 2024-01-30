@@ -8,6 +8,10 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 public class RoadAddrApi {
 
 	public String getRoadAddr (String keyword) throws Exception{
@@ -37,7 +41,14 @@ public class RoadAddrApi {
     	}
     	br.close();
     	
-		return sb.toString();
+    	// JSON 데이터에서 원하는 값 추출하기
+    	JSONParser parser = new  JSONParser();
+    	JSONObject object = (JSONObject) parser.parse(sb.toString());
+    	JSONObject results = (JSONObject) object.get("results");// 키값
+    	JSONArray juso = (JSONArray) results.get("juso");
+    	JSONObject jusoItem = (JSONObject) juso.get(0);			// 인덱스값
+    	String roadAddr = (String) jusoItem.get("roadAddr");	// 키값
+		return roadAddr;
 	}
 	
 }

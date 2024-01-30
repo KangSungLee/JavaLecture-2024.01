@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import org.jsoup.nodes.Document.OutputSettings;
+
 
 public class Ex07_BufferedIO {
 	// 버퍼드 중요 *****
