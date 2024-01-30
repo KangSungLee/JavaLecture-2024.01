@@ -2,39 +2,50 @@ package ch18_io;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Q22_WordCount {
 
 	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
-		System.out.print("찾을 파일> ");
-		String filename = scan.nextLine();
-		scan.close();
-
-		grep(filename);
-
-	}
-
-	static void grep(String filename) {
+		List<Byte> byteList = new ArrayList<>();
 		try {
-			InputStream is = new FileInputStream(filename);
+			InputStream is = new FileInputStream("c:/temp/test.txt");
 			int numSum = 0;
-			byte[] arr = new byte[512];
+			byte[] arr = new byte[500];
 			while (true) {
 				int num = is.read(arr);
-				if(num == -1)
+				if (num == -1)
 					break;
 				numSum = num;
 			}
-			String stringValue = new String(arr);
-			System.out.println("읽은 바이트 수: " + numSum);
+			for (byte bl: arr) {
+				if(bl == 0) {
+					break;
+					}
+				byteList.add(bl);
+			}
+			
+			int twinSum = findTwinSum(byteList);
+			System.out.println("겹친 갯수" + twinSum + "고유 갯수" + byteList.size() + "갯수: " + numSum);
+				byteList.forEach(x -> System.out.println(x));
 			is.close();
-			
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-
+	static int findTwinSum (List<Byte> byteList) {
+		int twinSum = 0;		
+		for (int i = 0; i < byteList.size(); i++) {
+			for (int k = 1; k < byteList.size(); k++) {
+				if (byteList.get(i) == byteList.get(k)) {
+					byteList.remove(k);
+					twinSum++;
+				}
+			}
+		}
+		return twinSum;
+		
+	}
 }

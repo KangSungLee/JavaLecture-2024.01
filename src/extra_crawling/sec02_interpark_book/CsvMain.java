@@ -11,7 +11,7 @@ public class CsvMain {
 
 	public static void main(String[] args) throws IOException {
 		InterparkBookService interparkBookService = new InterparkBookService();
-		CsvUtil csvUtil = new CsvUtilImpl();
+		CsvMain csvUtil = new CsvUtilImpl();
 		
 		List<InterparkBook> list = interparkBookService.getBestSeller();
 		List<List<String>> csvList = new ArrayList<List<String>>();
