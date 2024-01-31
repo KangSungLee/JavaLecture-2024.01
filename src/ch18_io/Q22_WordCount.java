@@ -39,7 +39,7 @@ public class Q22_WordCount {
 		int twinSum = 0;		
 		for (int i = 0; i < byteList.size(); i++) {
 			for (int k = 1; k < byteList.size(); k++) {
-
+				String ik = new String(byteList.get(i).toString());
 				if (byteList.get(i) == byteList.get(k)) {
 					byteList.remove(k);
 					twinSum++;
