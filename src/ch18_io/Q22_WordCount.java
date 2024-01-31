@@ -10,9 +10,9 @@ public class Q22_WordCount {
 	public static void main(String[] args) {
 		List<Byte> byteList = new ArrayList<>();
 		try {
-			InputStream is = new FileInputStream("c:/temp/test.txt");
+			InputStream is = new FileInputStream("c:/Temp/kakaoApiKey.txt");
 			int numSum = 0;
-			byte[] arr = new byte[500];
+			byte[] arr = new byte[512];
 			while (true) {
 				int num = is.read(arr);
 				if (num == -1)
@@ -39,6 +39,7 @@ public class Q22_WordCount {
 		int twinSum = 0;		
 		for (int i = 0; i < byteList.size(); i++) {
 			for (int k = 1; k < byteList.size(); k++) {
+
 				if (byteList.get(i) == byteList.get(k)) {
 					byteList.remove(k);
 					twinSum++;
