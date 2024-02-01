@@ -1,5 +1,6 @@
 package Qq.q2;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 
 public class Member {
@@ -40,11 +41,15 @@ public class Member {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+	private int getAge() {
+		LocalDate today = LocalDate.now();
+		return today.getYear() - birthYear;
+	}
 	
 	@Override
 	public String toString() {
-		int age = Calendar.getInstance().get(Calendar.YEAR) - birthYear;
-		return "ID: " + mid + ", 이름: " + name + ", 나이: " + age + ", 전화번호: " + tel;
+//		int age = Calendar.getInstance().get(Calendar.YEAR) - birthYear;
+		return "ID: " + mid + ", 이름: " + name + ", 나이: " + getAge() + ", 전화번호: " + tel;
 	}
 	
 }

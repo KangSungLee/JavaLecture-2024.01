@@ -39,7 +39,7 @@ public class q1 {
 				resultSum += i;
 			}
 		}
-		System.out.println(resultSum);
+		System.out.println("2에서부터 100까지 소수의 합" + resultSum);
 
 	}
 
@@ -49,7 +49,7 @@ public class q1 {
 			return false;
 		}
 
-		for (int i = 2; i <= Math.sqrt(number); i++) {
+		for (int i = 2; i <= number - 1; i++) {
 			if (number % i == 0) {
 				return false;
 			}
