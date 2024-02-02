@@ -10,7 +10,7 @@ SHOW TABLES;
 DESC city;
 
 /*
- *  1. Select
+ *  1. Select 
  */
 /*
 SELECT 필드명 
@@ -199,3 +199,12 @@ SELECT Continent, r.Name countryName, l.Name cityName, l.Population FROM city l
     WHERE r.Continent='Asia'
     ORDER BY l.population DESC
     LIMIT 10;
+
+/*
+ * 1.8 Sub Query
+ */
+-- 국내 도시만으로 새로운 테이블을 만드는 경우
+CREATE TABLE if NOT EXISTS kcity LIKE city;
+INSERT INTO kcity
+    SELECT * FROM city WHERE countrycode='KOR';
+
