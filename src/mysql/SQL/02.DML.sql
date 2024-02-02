@@ -37,3 +37,10 @@ INSERT INTO kcity(name, countrycode, district)
 -- 경기도 광주시 추가 - auto_increment 속성이 설정되어 있어도 ID값을 임의로 부여 가능
 INSERT INTO kcity VALUES(2600, '광주', 'KOR','Kyonggi',300000);
 
+/*
+ * 4. Delete
+ *
+ *      DELETE FROM 테이블명 WHERE 조건;        # 조건 - primary key = value
+ */
+-- 강원도 속초시 삭제
+DELETE FROM kcity WHERE id=2493;
