@@ -34,6 +34,7 @@ public class Q22_WordCount {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 	static int findTwinSum (List<Byte> byteList) {
 		int twinSum = 0;		
