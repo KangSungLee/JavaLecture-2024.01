@@ -1,4 +1,4 @@
-package mysql.sec02_kcity;
+package mysql.sec99_song;
 
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -10,22 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-/**
- * City DAO(Data Access Object) - DB table 을 다루는 라이브러리 Select, Insert, Update,
- * Delete 를 처리하는 프로그램
- */
-public class CityDao {
+public class SongDao {
 	private String connStr;
 	private String user;
 	private String password;
 
-	public CityDao() {
+	public SongDao() {
 		String path = "C:/Workspace/Java/lesson/src/mysql/mysql.properties";
-		// 보안관련?
 		try {
 			Properties prop = new Properties();
 			prop.load(new FileInputStream(path));
-
 			String host = prop.getProperty("host");
 			String port = prop.getProperty("port");
 			String database = prop.getProperty("database");
@@ -48,25 +42,20 @@ public class CityDao {
 		return conn;
 	}
 
-	public City getCityById(int id) {
+	public Song getSongById(int sid) {
 		Connection conn = myConnection();
-		String sql = "select * from kcity where id=?";
-//		City city = new City();		// 방법 1
-		City city = null; // 2 방법
+		String sql = "select * from song where sid=?";
+		Song song = new Song();
 		try {
 			// 파라메터 세팅
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, id);
+			pstmt.setInt(1, sid);
 
-			// 셀렉트 실행하고 결과 받기
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-//				city.setId(rs.getInt(1));				// 방법 1
-//				city.setName(rs.getString(2));			// 방법 1
-//				city.setCountryCode(rs.getString(3));	// 방법 1
-//				city.setDistrict(rs.getString(4));		// 방법 1
-//				city.setPopulation(rs.getInt(5));		// 방법 1
-				city = new City(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)); // 2 방법
+				song.setSid(rs.getInt(1));
+				song.setTitle(rs.getString(2));
+				song.setLyrics(rs.getString(3));
 			}
 			rs.close();
 			pstmt.close();
@@ -74,23 +63,22 @@ public class CityDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return city;
+		return song;
 	}
 
-	public City getCityByName(String name) {
+	public Song getSongByTitle(String title) {
 		Connection conn = myConnection();
-		String sql = "select * from kcity where name=?"; // 1번째
-		City city = null;
-
+		String sql = "select * from song where title=?"; // 1번째
+		Song song = null;
 		try {
 			// 파라메터 세팅
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, name); // 1번째 받아온 name 값
+			pstmt.setString(1, title); // 1번째 받아온 name 값
 
 			// Select 실행하고 결과를 ResultSet으로 받기
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
-				city = new City(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
+				song = new Song(rs.getInt(1), rs.getString(2), rs.getString(3));
 			}
 			rs.close();
 			pstmt.close();
@@ -99,20 +87,20 @@ public class CityDao {
 			e.printStackTrace();
 		}
 
-		return city;
+		return song;
 	}
-
-	public List<City> getCityListAll() {
+	
+	public List<Song> getSongListAll() {
 		Connection conn = myConnection();
-		String sql = "select * from kcity";
-		List<City> list = new ArrayList<City>();
+		String sql = "select * from song";
+		List<Song> list = new ArrayList<Song>();
 		try {
 			Statement stmt = conn.createStatement(); // 조건값이 없을때
 			// Select 실행하고 결과를 ResultSet으로 받기
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				City city = new City(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
-				list.add(city);
+				Song song = new Song(rs.getInt(1), rs.getString(2), rs.getString(3));
+				list.add(song);
 			}
 			rs.close();
 			stmt.close();
@@ -123,63 +111,15 @@ public class CityDao {
 
 		return list;
 	}
-
-	public List<City> getCityListByDistrict(String district) {
-		Connection conn = myConnection();
-		String sql = "select * from kcity where district=?";
-		List<City> list = new ArrayList<City>();
-		try {
-			// 파라메터 세팅
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, district); // 1번째 받아온 name 값
-
-			// Select 실행하고 결과를 ResultSet에 담기
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				City city = new City(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5));
-				list.add(city);
-			}
-			rs.close();
-			pstmt.close();
-			conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
-
-	public void insertCity(City city) {
-		Connection conn = myConnection();
-		String sql = "insert into kcity values(default, ?, ?, ?, ?)";
-		try {
-			// 파라메타 세팅
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, city.getName());
-			pstmt.setString(2, city.getCountryCode());
-			pstmt.setString(3, city.getDistrict());
-			pstmt.setInt(4, city.getPopulation());
-
-			// SQL 실행
-			pstmt.executeUpdate();
-
-			pstmt.close();
-			conn.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	
-	public void updateCity(City city) {
+	public void insertSong(Song song) {
 		Connection conn = myConnection();
-		String sql = "UPDATE kcity SET name=?, countryCode=?, district=?, population=? where id=?";
+		String sql = "insert into song values(default, ?, ?)";
 		try {
 			// 파라메타 세팅
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, city.getName());
-			pstmt.setString(2, city.getCountryCode());
-			pstmt.setString(3, city.getDistrict());
-			pstmt.setInt(4, city.getPopulation());
-			pstmt.setInt(5, city.getId());
+			pstmt.setString(1, song.getTitle());
+			pstmt.setString(2, song.getLyrics());
 
 			// SQL 실행
 			pstmt.executeUpdate();
@@ -191,13 +131,33 @@ public class CityDao {
 		}
 	}
 
-	public void DeleteCity(int id) {
+	public void updateSong(Song song) {
 		Connection conn = myConnection();
-		String sql = "DELETE FROM kcity WHERE id=?";
+		String sql = "UPDATE song SET title=?, lyrics=? where sid=?";
 		try {
 			// 파라메타 세팅
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, id);
+			pstmt.setString(1, song.getLyrics());
+			pstmt.setString(2, song.getTitle());
+			pstmt.setInt(3, song.getSid());
+
+			// SQL 실행
+			pstmt.executeUpdate();
+
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void DeleteSong(int sid) {
+		Connection conn = myConnection();
+		String sql = "DELETE FROM song WHERE sid=?";
+		try {
+			// 파라메타 세팅
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, sid);
 
 			// SQL 실행
 			pstmt.executeUpdate();

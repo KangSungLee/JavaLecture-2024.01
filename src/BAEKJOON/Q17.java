@@ -10,10 +10,13 @@ public class Q17 {
 		if (min < 45) {
 			hour -= 1;
 			min = min - 45 + 60;
+			if (hour < 0) {
+				hour = 23;
+			}
 		} else {
-			
+			min = min - 45;
 		}
-
+		System.out.println(hour + ":" + min);
 	}
 
 }
