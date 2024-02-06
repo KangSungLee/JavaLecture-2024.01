@@ -10,7 +10,7 @@ public class Main {
 		Song song = songDao.getSongById(101);
 		System.out.println(song);
 		
-		song = songDao.getSongByTitle("8282");
+		song = songDao.getSongByTitle("별빛");	
 		System.out.println(song);
 		System.out.println("===================================================");
 		
@@ -19,14 +19,16 @@ public class Main {
 //		songDao.insertSong(song);
 		
 		song = songDao.getSongById(117);
-		song.setTitle("ㄴㄴ");
-		song.setLyrics("ㄴㄴㄴ");
+		song.setTitle("Hype boy");
+		song.setLyrics("너 없이는 매일매일");
 		songDao.updateSong(song);
 		
-		songDao.DeleteSong(118);
+		songDao.deleteSong(118);
 		
 		List<Song> list = songDao.getSongListAll();
 		list.forEach(x -> System.out.println(x));
+		
+		songDao.close();
 	}
 
 }
