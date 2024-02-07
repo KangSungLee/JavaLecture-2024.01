@@ -1,4 +1,4 @@
-package mysql.sec99_song;
+package mysql.sec03_song;
 
 import java.io.FileInputStream;
 import java.sql.Connection;

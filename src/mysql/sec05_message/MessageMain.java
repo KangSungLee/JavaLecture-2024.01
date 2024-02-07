@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class MessageMain {
 	private static MessageService messageService = new MessageServiceMySQLImpl();
+	// ==> @Autowired private static MessageService messageService;
 	private static Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -79,6 +80,7 @@ public class MessageMain {
 			}
 		}
 		System.out.println("프로그램 종료");
+		messageService.close();
 		scan.close();
 	}
 }

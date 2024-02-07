@@ -3,7 +3,8 @@ package mysql.sec05_message;
 import java.util.List;
 
 public class MessageServiceMySQLImpl implements MessageService {
-	private MessageDao msgDao = new MessageDao(); 
+	private MessageDao msgDao = new MessageDao(); 	// 종속적(의존적)
+	// ==> @Autowired private Message msgDao;		// 의존성 주입
 
 	@Override
 	public Message findByMid(int mid) {

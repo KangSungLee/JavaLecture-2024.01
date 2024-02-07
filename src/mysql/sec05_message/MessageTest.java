@@ -2,7 +2,7 @@ package mysql.sec05_message;
 
 import java.util.List;
 
-public class MessageTest {
+public class MessageTest {	// 메세지 다오 테스트
 
 	public static void main(String[] args) {
 		MessageDao msgDao = new MessageDao();
