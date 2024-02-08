@@ -23,7 +23,7 @@ public class UserDao {
 	private Connection conn;
 	
 	public UserDao() {
-		String path = "C:/Workspace/Java/lesson/src/mysql/mysql.properties";
+		String path = "C:/Workspace/Java/lesson/src/mysql/sec07_bbs/mysql.properties";
 		try {
 			Properties prop = new Properties();
 			prop.load(new FileInputStream(path));
@@ -90,7 +90,7 @@ public class UserDao {
 	}
 	
 	public void insertUser(User user) {
-		String sql = "insert users values (?, ?, ?, ?, default, default)";
+		String sql = "insert into users values (?, ?, ?, ?, default, default)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, user.getUid());

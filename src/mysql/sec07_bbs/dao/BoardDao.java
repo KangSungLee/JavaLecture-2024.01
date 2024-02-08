@@ -19,7 +19,7 @@ public class BoardDao {
 	private Connection conn;
 
 	public BoardDao() {
-		String path = "C:/Workspace/Java/lesson/src/mysql/mysql.properties";
+		String path = "C:/Workspace/Java/lesson/src/mysql/sec07_bbs/mysql.properties";
 		try {
 			Properties prop = new Properties();
 			prop.load(new FileInputStream(path));
@@ -45,7 +45,7 @@ public class BoardDao {
 	}
 
 	public Board getBoard(int bid) {
-		String sql = "select * from board where uid=?";
+		String sql = "SELECT b.*, u.uname FROM board b JOIN users u ON b.uid=u.uid WHERE b.bid=?";
 		Board board = null;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -55,10 +55,9 @@ public class BoardDao {
 			while (rs.next()) {
 				board = new Board(rs.getInt(1), rs.getString(2), rs.getString(3), 
 						rs.getString(4), LocalDateTime.parse(rs.getString(5).replace(" ", "T")),
-						rs.getInt(6), rs.getInt(7), rs.getInt(8));
+						rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getString(9));
 			}
-			rs.close();
-			pstmt.close();
+			rs.close(); pstmt.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -68,20 +67,23 @@ public class BoardDao {
 	// field 값은 title, content, uid 등 attribute name
 	// query 값은 검색어 % + %
 	public List<Board> getBoardList(String field, String query, int num, int offset) {
-		String sql = "select * from users where ?=? limit ? offset ?";
+		String sql = "SELECT b.*, u.uname FROM board b"
+				+ "	JOIN users u ON b.uid=u.uid"
+				+ "	WHERE b.isDeleted=0 AND " + field + " LIKE ?"
+				+ "	ORDER BY bid DESC"
+				+ "	LIMIT ? OFFSET ?";
 		List<Board> list = new ArrayList<Board>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, field);
-			pstmt.setString(2, query);
-			pstmt.setInt(3, num);
-			pstmt.setInt(4, offset);
+			pstmt.setString(1, query);
+			pstmt.setInt(2, num);
+			pstmt.setInt(3, offset);
 			
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Board board = new Board(rs.getInt(1), rs.getString(2), rs.getString(3), 
 						rs.getString(4), LocalDateTime.parse(rs.getString(5).replace(" ", "T")),
-						rs.getInt(6), rs.getInt(7), rs.getInt(8));
+						rs.getInt(6), rs.getInt(7), rs.getInt(8), rs.getString(9));
 				list.add(board);
 			}
 			rs.close(); pstmt.close();
@@ -136,12 +138,12 @@ public class BoardDao {
 	
 	// field 값은 view 또는 reply
 	public void increaseCount(String field, int bid) {
-		String sql = "update board set ? = ? +1 where bid=?";
-		try {
+		String sql = "UPDATE board SET " + field + "Count=" + field + "Count + 1 WHERE bid=?";
+		try { 
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, field);
-			pstmt.setString(2, field);
-			pstmt.setInt(3, bid);
+//			pstmt.setString(1, field);
+//			pstmt.setString(2, field);
+			pstmt.setInt(1, bid);
 			
 			pstmt.executeUpdate();
 			pstmt.close();

@@ -19,7 +19,7 @@ public class ReplyDao {
 	private Connection conn;
 	
 	public ReplyDao() {
-		String path = "C:/Workspace/Java/lesson/src/mysql/mysql.properties";
+		String path = "C:/Workspace/Java/lesson/src/mysql/sec07_bbs/mysql.properties";
 		try {
 			Properties prop = new Properties();
 			prop.load(new FileInputStream(path));
@@ -44,29 +44,32 @@ public class ReplyDao {
 		}
 	}
 	
-	public Reply getReply(int rid) {
-		String sql = "select * from reply where rid=?";
-		Reply reply = null;
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, rid);
-			
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				reply = new Reply(rs.getInt(1), rs.getString(2), LocalDateTime.parse(rs.getString(3).replace(" ", "T")), 
-						rs.getString(4), rs.getInt(5));
-			}
-			rs.close(); pstmt.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return reply;
-
-	}
+//	public Reply getReply(int rid) {
+//		String sql = "select * from reply where rid=?";
+//		Reply reply = null;
+//		try {
+//			PreparedStatement pstmt = conn.prepareStatement(sql);
+//			pstmt.setInt(1, rid);
+//			
+//			ResultSet rs = pstmt.executeQuery();
+//			while (rs.next()) {
+//				reply = new Reply(rs.getInt(1), rs.getString(2), LocalDateTime.parse(rs.getString(3).replace(" ", "T")), 
+//						rs.getString(4), rs.getInt(5));
+//			}
+//			rs.close(); pstmt.close();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return reply;
+//
+//	}
 	
 	public List<Reply> getReplyList(int bid) {
-		String sql = "select * from reply where bid=?";
-		List<Reply> list = new ArrayList<Reply>();
+		String sql = "SELECT r.*, u.uname FROM reply r"
+				+ "	JOIN users u ON r.uid=u.uid"
+				+ "	WHERE r.bid=?"
+				+ "	ORDER BY rid";
+		List<Reply> list = new ArrayList<>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, bid);
@@ -74,7 +77,7 @@ public class ReplyDao {
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Reply reply = new Reply(rs.getInt(1), rs.getString(2), LocalDateTime.parse(rs.getString(3).replace(" ", "T")), 
-						rs.getString(4), rs.getInt(5));
+							rs.getString(4), rs.getInt(5), rs.getString(6));
 				list.add(reply);
 			}
 			rs.close(); pstmt.close();
@@ -85,7 +88,7 @@ public class ReplyDao {
 	}
 	
 	public void insertReply(Reply reply) {
-		String sql = "insert users values (default, ?, default, ?, ?)";
+		String sql = "insert into reply values (default, ?, default, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, reply.getComment());
