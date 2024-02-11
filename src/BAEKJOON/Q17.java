@@ -16,7 +16,7 @@ public class Q17 {
 		} else {
 			min = min - 45;
 		}
-		System.out.println(hour + ":" + min);
+		System.out.println(hour + " " + min);
 	}
 
 }
